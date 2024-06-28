@@ -1,5 +1,4 @@
 import re
-from module.base.timer import Timer
 
 from module.campaign.campaign_event import CampaignEvent
 from module.coalition.assets import *
@@ -7,11 +6,7 @@ from module.coalition.combat import CoalitionCombat
 from module.exception import ScriptError, ScriptEnd
 from module.logger import logger
 from module.ocr.ocr import Digit
-<<<<<<< HEAD
 from  module.log_res.log_res import LogRes
-=======
-from module.ui.assets import BACK_ARROW
->>>>>>> 07200a1c4 (Fix: oil double check before task_delay)
 
 
 class AcademyPtOcr(Digit):
@@ -50,20 +45,6 @@ class Coalition(CoalitionCombat, CampaignEvent):
         pt = ocr.ocr(self.device.image)
         return pt
 
-    def oil_double_check(self):
-        timeout = Timer(1, count=2).start()
-        while True:
-            self.device.screenshot()
-            if self.appear(BACK_ARROW, offset=(5, 2)):
-                break
-            if timeout.reached():
-                logger.warning('Assumes that OCR_OIL is stable')
-                break
-        if self.get_oil() < max(500, self.config.StopCondition_OilLimit):
-            return True
-        else:
-            return False
-
     def triggered_stop_condition(self, oil_check=False, pt_check=False):
         """
         Returns:
@@ -77,7 +58,7 @@ class Coalition(CoalitionCombat, CampaignEvent):
             return True
         # Oil limit
         if oil_check:
-            if self.get_oil() < max(500, self.config.StopCondition_OilLimit) and self.oil_double_check():
+            if self.get_oil() < max(500, self.config.StopCondition_OilLimit):
                 logger.hr('Triggered stop condition: Oil limit')
                 self.config.task_delay(minute=(120, 240))
                 return True
