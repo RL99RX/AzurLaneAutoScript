@@ -414,7 +414,8 @@
       "DroidCast": "DroidCast",
       "DroidCast_raw": "DroidCast_raw",
       "scrcpy": "scrcpy",
-      "nemu_ipc": "nemu_ipc"
+      "nemu_ipc": "nemu_ipc",
+      "ldopengl": "ldopengl"
     },
     "ControlMethod": {
       "name": "模拟器控制方案",
@@ -730,6 +731,7 @@
       "event_20240229_cn": "雪境迷踪",
       "event_20240425_cn": "共鸣的PASSION",
       "event_20240521_cn": "绽放于辉光之城",
+      "event_20240725_cn": "幻梦间奏曲",
       "raid_20200624": "复刻特别演习埃塞克斯级",
       "raid_20210708": "复刻穿越彼方的水线",
       "raid_20220127": "演习神秘事件调查",
@@ -1180,6 +1182,14 @@
       "cassin_or_downes": "卡辛或唐斯",
       "z20_or_z21": "Z20或Z21"
     },
+    "EnableEquipmentCode": {
+      "name": "使用装备码更换装备",
+      "help": "仅当选择“更换舰船 + 装备”时生效。在更换舰船时，若指定了对应舰船的装备码则会直接应用，否则会使用前一艘舰船导出的装备码，并修改设置。"
+    },
+    "EquipmentCode": {
+      "name": "",
+      "help": ""
+    },
     "CommissionLimit": {
       "name": "防止紧急委托数量过多",
       "help": "在7x24运行时防止紧急委托数量过多做不完每日委托，建议在委托过滤器仅选择短时长高收益委托"
@@ -1412,6 +1422,9 @@
       "name": "科研过滤器",
       "help": "科研掉落和项目刷新见 https://azur-stats.lyoko.io/，对这些没有基本了解的人不建议编写自定义过滤器，建议使用预优化科研过滤器",
       "custom": "自定义",
+      "series_7_blueprint_la9": "七期 蓝图+La9",
+      "series_7_blueprint_only": "七期 仅蓝图",
+      "series_7_la9_only": "七期 仅La9",
       "series_6_blueprint_203": "六期 蓝图+203",
       "series_6_blueprint_only": "六期 仅蓝图",
       "series_6_203_only": "六期 仅203",
@@ -1942,15 +1955,19 @@
       "name": "领取邮件",
       "help": ""
     },
-    "Collect": {
-      "name": "领取邮件",
+    "ClaimMerit": {
+      "name": "领取功勋邮件",
       "help": ""
     },
-    "Filter": {
-      "name": "邮件过滤器",
-      "help": "默认只领取演习功勋邮件"
+    "ClaimMaintenance": {
+      "name": "领取维护邮件",
+      "help": ""
     },
-    "Delete": {
+    "ClaimTradeLicense": {
+      "name": "领取月卡邮件",
+      "help": ""
+    },
+    "DeleteCollected": {
       "name": "删除已读邮件",
       "help": ""
     }

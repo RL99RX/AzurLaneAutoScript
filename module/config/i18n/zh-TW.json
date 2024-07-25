@@ -414,7 +414,8 @@
       "DroidCast": "DroidCast",
       "DroidCast_raw": "DroidCast_raw",
       "scrcpy": "scrcpy",
-      "nemu_ipc": "nemu_ipc"
+      "nemu_ipc": "nemu_ipc",
+      "ldopengl": "ldopengl"
     },
     "ControlMethod": {
       "name": "模擬器控制方案",
@@ -705,7 +706,7 @@
       "event_20211028_tw": "復刻光與影的鳶尾之華",
       "event_20211111_cn": "復刻杰諾瓦的焰火",
       "event_20211125_cn": "復刻-交匯世界的弧光",
-      "event_20211229_cn": "逆轉彩虹之塔",
+      "event_20211229_cn": "復刻逆轉彩虹之塔",
       "event_20220210_cn": "復刻北境序曲",
       "event_20220224_cn": "深度回音",
       "event_20220310_tw": "復刻斯圖爾特的硝煙",
@@ -730,6 +731,7 @@
       "event_20240229_cn": "Snowrealm Peregrination",
       "event_20240425_cn": "Heart-Linking Harmony",
       "event_20240521_cn": "Light of the Martyrium",
+      "event_20240725_cn": "Interlude of Illusions",
       "raid_20200624": "特別演習埃塞克斯級(復刻)",
       "raid_20210708": "復刻穿越彼方的水線",
       "raid_20220127": "演習神秘事件調查",
@@ -1180,6 +1182,14 @@
       "cassin_or_downes": "卡辛或唐斯",
       "z20_or_z21": "Z20或Z21"
     },
+    "EnableEquipmentCode": {
+      "name": "使用裝備碼更換裝備",
+      "help": "僅當選擇“更換艦船 + 裝備”時生效。在更換艦船時，若制定了對應艦船的裝備碼則會直接應用，否則會使用前一艘艦船導出的裝備碼，並調整設定。"
+    },
+    "EquipmentCode": {
+      "name": "",
+      "help": ""
+    },
     "CommissionLimit": {
       "name": "防止緊急委託數量過多",
       "help": "在7x24運行時防止緊急委託數量過多做不完每日委託，建議在委託過濾器僅選擇短時長高收益委託"
@@ -1412,6 +1422,9 @@
       "name": "科研過濾器",
       "help": "科研掉落和項目刷新見 https://azur-stats.lyoko.io/，對這些沒有基本了解的人不建議編寫自定義過濾器，建議使用預優化科研過濾器",
       "custom": "自定義",
+      "series_7_blueprint_la9": "七期 藍圖+La9",
+      "series_7_blueprint_only": "七期 僅藍圖",
+      "series_7_la9_only": "七期 僅La9",
       "series_6_blueprint_203": "六期 藍圖+203",
       "series_6_blueprint_only": "六期 僅藍圖",
       "series_6_203_only": "六期 僅203",
@@ -1942,15 +1955,19 @@
       "name": "領取郵件",
       "help": ""
     },
-    "Collect": {
-      "name": "領取郵件",
+    "ClaimMerit": {
+      "name": "領取功勳郵件",
       "help": ""
     },
-    "Filter": {
-      "name": "郵件過濾器",
-      "help": "默認只領取演習功勳郵件"
+    "ClaimMaintenance": {
+      "name": "領取維护郵件",
+      "help": ""
     },
-    "Delete": {
+    "ClaimTradeLicense": {
+      "name": "領取月卡郵件",
+      "help": ""
+    },
+    "DeleteCollected": {
       "name": "刪除已讀郵件",
       "help": ""
     }

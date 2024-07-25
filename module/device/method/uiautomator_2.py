@@ -10,8 +10,8 @@ from lxml import etree
 
 from module.base.utils import *
 from module.device.connection import Connection
-from module.device.method.utils import (RETRY_TRIES, retry_sleep, handle_adb_error,
-                                        ImageTruncated, PackageNotInstalled, possible_reasons)
+from module.device.method.utils import (ImageTruncated, PackageNotInstalled, RETRY_TRIES, handle_adb_error,
+                                        handle_unknown_host_service, possible_reasons, retry_sleep)
 from module.exception import RequestHumanTakeover
 from module.logger import logger
 
@@ -50,6 +50,10 @@ def retry(func):
             except AdbError as e:
                 if handle_adb_error(e):
                     def init():
+                        self.adb_reconnect()
+                elif handle_unknown_host_service(e):
+                    def init():
+                        self.adb_start_server()
                         self.adb_reconnect()
                 else:
                     break
@@ -335,3 +339,26 @@ class Uiautomator2(Connection):
             description=resp.get('description', '')
         )
         return resp
+
+    def u2_set_fastinput_ime(self, enable: bool):
+        self.u2.set_fastinput_ime(enable)
+
+    def u2_current_ime(self):
+        return self.u2.current_ime()
+
+    def u2_send_keys(self, text: str, clear: bool=False):
+        self.u2.send_keys(text=text, clear=clear)
+
+    # Ref: https://uiautomator2.readthedocs.io/en/latest/api.html#uiautomator2.Session.send_action
+    def u2_send_action(self, code):
+        self.u2.send_action(code=code)
+
+    def u2_clear_text(self):
+        self.u2.clear_text()
+
+    @property
+    def clipboard(self):
+        return self.u2.clipboard
+    
+    def set_clipboard(self, text, label=None):
+        return self.u2.set_clipboard(text=text, label=label)
