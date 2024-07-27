@@ -320,7 +320,7 @@ class GemsFarming(CampaignRun, Dock, EquipmentChange, GemsEquipmentHandler):
         logger.hr('FINDING FLAGSHIP')
 
         scanner = ShipScanner(
-            level=(100, 100), emotion=(emotion, 150), fleet=self.fleet_to_attack, status='free')
+            level=(1, lv), emotion=(emotion, 150), fleet=self.fleet_to_attack, status='free')
         scanner.disable('rarity')
 
         if self.config.GemsFarming_CommonCV == 'any':
@@ -475,7 +475,7 @@ class GemsFarming(CampaignRun, Dock, EquipmentChange, GemsEquipmentHandler):
                       appear_button=self.page_fleet_check_button, check_button=DOCK_CHECK, skip_first_screenshot=True)
         self.FLEET_ENTER_FLAGSHIP = self._FLEET_ENTER_FLAGSHIP if not self.hard_mode else self.FLEET_ENTER_FLAGSHIP
         self.dock_filter_set(
-            index='cv', rarity='common', extra='can_limit_break', sort='total')
+            index='cv', rarity='common', extra='enhanceable', sort='total')
         self.dock_favourite_set(False)
 
         ship = self.get_common_rarity_cv()
@@ -629,8 +629,7 @@ class GemsFarming(CampaignRun, Dock, EquipmentChange, GemsEquipmentHandler):
 
 
             # End
-            # if self._trigger_lv32 or self._trigger_emotion:
-            if self._trigger_emotion:
+            if self._trigger_lv32 or self._trigger_emotion:
                 success = True
                 if self.change_flagship:
                     success = self.flagship_change()
